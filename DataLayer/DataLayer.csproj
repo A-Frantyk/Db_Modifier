@@ -51,6 +51,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201701122008229_InitialCreate.cs" />
+    <Compile Include="Migrations\201701122008229_InitialCreate.Designer.cs">
+      <DependentUpon>201701122008229_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\DevTest.cs" />
     <Compile Include="DbTestContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -59,7 +64,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201701122008229_InitialCreate.resx">
+      <DependentUpon>201701122008229_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

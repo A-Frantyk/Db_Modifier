@@ -42,7 +42,8 @@ namespace test.Controllers
 
             if(allMessages != null)
             {
-                return View(allMessages);
+                //return View(allMessages);
+                return PartialView("_MessagesList", allMessages);
             }
 
             throw new InvalidOperationException($"Cannot load all messages.");

@@ -1,30 +1,41 @@
-﻿using System;
+﻿using DataLayer;
+using DAL.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using test.Models;
 
 namespace test.Controllers
 {
     public class HomeController : Controller
     {
+        private DbTestContext _context = new DbTestContext();
+
         public ActionResult Index()
         {
+
+
             return View();
         }
-
-        public ActionResult About()
+        
+        public ActionResult GetMessages()
         {
-            ViewBag.Message = "Your application description page.";
+            DevTestRepository repository = new DevTestRepository(_context);
 
-            return View();
+            var messages = repository.GetAll().AsEnumerable();
+
+            return View(messages);
         }
 
-        public ActionResult Contact()
+        public void CreateNewNote(DevTestModel model)
         {
-            ViewBag.Message = "Your contact page.";
+            if(model != null)
+            {
 
-            return View();
+            }
         }
+
     }
 }

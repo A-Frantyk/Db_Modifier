@@ -8,7 +8,7 @@ using DataLayer;
 using DataLayer.Model;
 using DAL.Interfaces;
 
-namespace ServiceLayer.Repositories
+namespace DAL.Repositories
 {
     public class DevTestRepository : IRepository<DevTest>, IDisposable
     {

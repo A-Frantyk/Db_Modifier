@@ -1,0 +1,28 @@
+﻿@model IEnumerable<test.Models.DevTestModel>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().AffiliateName)</th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Impressions)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AffiliateName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Impressions)
+            </td>
+        </tr>
+    }
+
+</table>

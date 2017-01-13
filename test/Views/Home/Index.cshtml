@@ -16,28 +16,96 @@
     </div>
 </div>
 
-@section Scripts {
+<div class="row">
+    <div class="col-md-2">
+        <button class="btn-default" id="create_new_devtest" onclick="sendNewData()">Create</button>
+    </div>
+    <table class="col-md-9">
+        <tr class="table_head">
+            <th>AffiliateName</th>
+            <th>Impressions</th>
+            <th>CompaignName</th>
+            <th>Clicks</th>
+            <th>Conversions</th>
+            <th>Date</th>
+        </tr>
+        <tr class="table_input">
+            <td><input placeholder="AffiliateName" id="affiliateName"/></td>
+            <td><input placeholder="Impressions" id="impressions"/></td>
+            <td><input placeholder="CompaignName" id="compaignName"/></td>
+            <td><input placeholder="Clicks" id="clicks"/></td>
+            <td><input placeholder="Conversions" id="conversions"/></td>
+            <td><input placeholder="Date" id="date"/></td>
+        </tr>
+    </table>
 
+</div>
+
+<style>
+    .table_head, .table_input {
+        margin: 30px;        
+    }
+    .create_new_devtest {
+        display: inline;
+        margin: 5px 15px 5px 5px;
+    }
+</style>
+
+@section Scripts {
+    
     <script src="/Scripts/jquery.signalR-2.2.1.js"></script>
     <script src="/signalr/hubs"></script>
 
     <script type="text/javascript">
-        $(function () {
-            // Declare a proxy to reference the hub.
-            var notifications = $.connection.devTestHubs;
-
-            //debugger;
-            // Create a function that the hub can call to broadcast messages.
-            notifications.client.updateMessages = function () {
-                getAllMessages();
+        
+        function sendNewData() {
+            var obj = {
+                affiliateName: $("#affiliateName").val(),
+                impressions: $("#impressions").val(),
+                compaignName: $("#compaignName").val(),
+                clicks: $("#clicks").val(),
+                conversions: $("#conversions").val(),
+                date: $("#date").val()
             };
-            // Start the connection.
-            $.connection.hub.start().done(function () {
-                alert("connection started");
-                getAllMessages();
-            }).fail(function (e) {
-                alert(e);
-            });
+
+            $.ajax({
+                url: '/Home/CreateNew',
+                contentType: 'application/json',
+                type: 'POST',
+                dataType: 'json',
+                data: obj
+            })
+                .success(function (result) {
+                    alert("New data added to the DevTest table" + result);
+                })
+                .error(function (error) {
+                    alert("Cannot insert data into DevTest table" + error);
+                });
+        }
+
+        $(function () {
+
+            var connectionStarted = false;
+
+            // Declare a proxy to reference the hub.
+            if (!connectionStarted) {
+                var notifications = $.connection.devTestHubs;
+
+                //debugger;
+                // Create a function that the hub can call to broadcast messages.
+                notifications.client.updateMessages = function () {
+                    getAllMessages();
+                };
+                // Start the connection.
+                $.connection.hub.start().done(function () {
+                    alert("connection started");
+                    getAllMessages();
+
+                    connectionStarted = true;
+                }).fail(function (e) {
+                    alert(e);
+                });
+            }
         });
 
 
@@ -54,5 +122,7 @@
 
             });
         }
+
+
     </script>
 }

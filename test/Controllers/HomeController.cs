@@ -67,7 +67,11 @@ namespace test.Controllers
 
         public void Delete(DevTestModel model)
         {
-            
+            if (model != null)
+            {
+                _devTestService.RemoveMessage(model);
+                DevTestHub.DevTestHubs.SendMessages();
+            }
         }
 
     }

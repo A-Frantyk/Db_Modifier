@@ -52,7 +52,7 @@ namespace Services.DevTestService
 
                 _repository.Create(devTest);
 
-                _unitOfWork.Commit();
+                //_unitOfWork.Commit();
 
                 _unitOfWork.SaveChanges();
             }

@@ -54,6 +54,7 @@ namespace test.Controllers
             if(model != null)
             {
                 _devTestService.AddMessage(model);
+                DevTestHub.DevTestHubs.SendMessages();
             }
         }
 

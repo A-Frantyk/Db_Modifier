@@ -4,9 +4,11 @@
 
 <div class="jumbotron">
     @*<h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
+        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+        <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
 </div>
+
+
 
 <div class="row">
     <div class="col-md-12">
@@ -14,39 +16,43 @@
     </div>
 </div>
 
-<script type="text/javascript">
-    $(function () {
-        // Declare a proxy to reference the hub.
-        var notifications = $.connection.messagesHub;
+@section Scripts {
 
-        //debugger;
-        // Create a function that the hub can call to broadcast messages.
-        notifications.client.updateMessages = function () {
-            getAllMessages()
+    <script src="/Scripts/jquery.signalR-2.2.1.js"></script>
+    <script src="/signalr/hubs"></script>
 
-        };
-        // Start the connection.
-        $.connection.hub.start().done(function () {
-            alert("connection started")
-            getAllMessages();
-        }).fail(function (e) {
-            alert(e);
+    <script type="text/javascript">
+        $(function () {
+            // Declare a proxy to reference the hub.
+            var notifications = $.connection.devTestHubs;
+
+            //debugger;
+            // Create a function that the hub can call to broadcast messages.
+            notifications.client.updateMessages = function () {
+                getAllMessages();
+            };
+            // Start the connection.
+            $.connection.hub.start().done(function () {
+                alert("connection started");
+                getAllMessages();
+            }).fail(function (e) {
+                alert(e);
+            });
         });
-    });
 
 
-    function getAllMessages()
-    {
-        var tbl = $('#messagesTable');
-        $.ajax({
-            url: '/home/GetMessages',
-            contentType: 'application/html ; charset:utf-8',
-            type: 'GET',
-            dataType: 'html'
-        }).success(function (result) {
-            tbl.empty().append(result);
-        }).error(function () {
+        function getAllMessages() {
+            var tbl = $('#messagesTable');
+            $.ajax({
+                url: '/Home/GetMessages',
+                contentType: 'application/html ; charset:utf-8',
+                type: 'GET',
+                dataType: 'html'
+            }).success(function (result) {
+                tbl.empty().append(result);
+            }).error(function () {
 
-        });
-    }
-</script>
+            });
+        }
+    </script>
+}

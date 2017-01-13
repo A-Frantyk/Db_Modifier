@@ -49,6 +49,7 @@ namespace test.Controllers
             throw new InvalidOperationException($"Cannot load all messages.");
         }
 
+        [HttpPost]
         public void CreateNew(DevTestModel model)
         {
             if(model != null)

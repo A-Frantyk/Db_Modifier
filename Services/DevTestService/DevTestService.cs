@@ -37,7 +37,16 @@ namespace Services.DevTestService
         {
             if(model != null)
             {
-                var devTest = new DevTest { Impressions = model.Impressions, AffiliateName = model.AffiliateName };
+                var devTest = new DevTest()
+                {
+                    AffiliateName = model.AffiliateName,
+                    Impressions = model.Impressions,
+                    ID = model.ID,
+                    Date = model.Date,
+                    CompaignName = model.CompaignName,
+                    Conversions = model.Conversions,
+                    Clicks = model.Clicks
+                };
 
                 _unitOfWork.BeginTransaction();
 
@@ -49,6 +58,32 @@ namespace Services.DevTestService
             }
 
             throw new InvalidOperationException("Data to insert not found");
+        }
+
+        public void RemoveMessage(DevTestModel model)
+        {
+            if (model != null)
+            {
+                var devtest = new DevTest()
+                {
+                    AffiliateName = model.AffiliateName,
+                    Impressions = model.Impressions,
+                    ID = model.ID, 
+                    Date = model.Date,
+                    CompaignName = model.CompaignName,
+                    Conversions = model.Conversions,
+                    Clicks = model.Clicks
+                };
+
+                _unitOfWork.BeginTransaction();
+                _repository.Delete(devtest);
+
+                _unitOfWork.Commit();
+
+                _unitOfWork.SaveChanges();
+            }
+
+            throw new InvalidOperationException("No data to delete");
         }
     }
 }

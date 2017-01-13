@@ -1,3 +1,5 @@
+using System;
+
 namespace DataLayer.Model
 {
     using System.ComponentModel.DataAnnotations;
@@ -7,6 +9,14 @@ namespace DataLayer.Model
     public class DevTest
     {
         public int ID { get; set; }
+
+        public string CompaignName { get; set; }
+
+        public DateTime Date { get; set; }
+
+        public int Clicks { get; set; }
+
+        public int Conversions { get; set; }
 
         public int? Impressions { get; set; }
 

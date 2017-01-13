@@ -1,5 +1,4 @@
-﻿@using Services.ViewModels.DevTestModel
-@model IEnumerable<test.Models.DevTestModel>
+﻿@model IEnumerable<Services.ViewModels.DevTestModel>
 
 <p>
     @Html.ActionLink("Create New", "CreateNew")
@@ -11,7 +10,18 @@
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().Impressions)
         </th>
-
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().CompaignName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Clicks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Conversions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Date)
+        </th>
     </tr>
 
     @foreach (var item in Model)
@@ -22,6 +32,18 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Impressions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompaignName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Clicks)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Conversions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
             </td>
         </tr>
     }

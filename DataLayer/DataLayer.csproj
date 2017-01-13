@@ -51,9 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201701122008229_InitialCreate.cs" />
-    <Compile Include="Migrations\201701122008229_InitialCreate.Designer.cs">
-      <DependentUpon>201701122008229_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201701131436398_TableChanges.cs" />
+    <Compile Include="Migrations\201701131436398_TableChanges.Designer.cs">
+      <DependentUpon>201701131436398_TableChanges.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\DevTest.cs" />
@@ -65,8 +65,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201701122008229_InitialCreate.resx">
-      <DependentUpon>201701122008229_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201701131436398_TableChanges.resx">
+      <DependentUpon>201701131436398_TableChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

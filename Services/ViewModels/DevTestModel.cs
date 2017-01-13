@@ -13,5 +13,13 @@ namespace Services.ViewModels
         public int? Impressions { get; set; }
 
         public string AffiliateName { get; set; }
+
+        public string CompaignName { get; set; }
+
+        public DateTime Date { get; set; }
+
+        public int Clicks { get; set; }
+
+        public int Conversions { get; set; }
     }
 }

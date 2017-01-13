@@ -58,5 +58,17 @@ namespace test.Controllers
             }
         }
 
+        public void EditMessage(DevTestModel model)
+        {
+            if (model != null)
+            {
+            }
+        }
+
+        public void Delete(DevTestModel model)
+        {
+            
+        }
+
     }
 }

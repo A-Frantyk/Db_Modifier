@@ -45,13 +45,13 @@
     <Compile Include="ViewModels\DevTestModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{EDCD82E0-1C3B-4A96-AD39-95C7FD88089C}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">
       <Project>{377C0B66-35F1-4C3B-B796-D265D300E8CA}</Project>
       <Name>DataLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ServiceLayer\DAL.csproj">
-      <Project>{EDCD82E0-1C3B-4A96-AD39-95C7FD88089C}</Project>
-      <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

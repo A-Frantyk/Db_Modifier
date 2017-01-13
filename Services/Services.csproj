@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="DevTestService\DevTestService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\DevTestModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">
@@ -51,10 +52,6 @@
     <ProjectReference Include="..\ServiceLayer\DAL.csproj">
       <Project>{EDCD82E0-1C3B-4A96-AD39-95C7FD88089C}</Project>
       <Name>DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\test\test.csproj">
-      <Project>{ACACABB9-5FC2-4611-892B-D56CE3AA405F}</Project>
-      <Name>test</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -11,5 +11,7 @@ namespace DAL.Interfaces
         void BeginTransaction();
         void Commit();
         void RollBack();
+
+        void SaveChanges();
     }
 }

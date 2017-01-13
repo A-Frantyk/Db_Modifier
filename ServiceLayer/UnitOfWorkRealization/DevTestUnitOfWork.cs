@@ -34,5 +34,10 @@ namespace DAL.UnitOfWorkRealization
         {
             _transaction.Rollback();
         }
+
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
+        }
     }
 }

@@ -15,8 +15,6 @@ namespace test.Controllers
 
         public ActionResult Index()
         {
-
-
             return View();
         }
         
@@ -29,7 +27,7 @@ namespace test.Controllers
             return View(messages);
         }
 
-        public void CreateNewNote(DevTestModel model)
+        public void CreateNew(DevTestModel model)
         {
             if(model != null)
             {

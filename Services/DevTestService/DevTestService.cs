@@ -25,12 +25,29 @@ namespace Services.DevTestService
             _repository = repository;
         }
 
-        public IList<DevTest> GetAll()
+        public IList<DevTestModel> GetAll()
         {
             _unitOfWork.BeginTransaction();
             var allMessages = _repository.GetAll();
-            
-            return allMessages.ToList();
+
+            var viewModel = new List<DevTestModel>();
+
+            foreach (var allMessage in allMessages)
+            {
+                var model = new DevTestModel()
+                {
+                    ID = allMessage.ID,
+                    AffiliateName = allMessage.AffiliateName,
+                    Conversions = allMessage.Conversions,
+                    Clicks = allMessage.Clicks,
+                    CompaignName = allMessage.CompaignName,
+                    Date = allMessage.Date
+                };
+
+                viewModel.Add(model);
+            }
+
+            return viewModel;
         }
 
         public void AddMessage(DevTestModel model)
